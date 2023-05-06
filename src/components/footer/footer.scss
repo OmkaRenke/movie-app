@@ -1,0 +1,98 @@
+@import "../../../mixins.scss";
+.footer {
+  background: #000;
+  color: white;
+  width: 100vw;
+  height: 22rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.4rem;
+  z-index: 9;
+  .footerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .leftSection {
+      .items {
+        justify-content: center;
+        list-style-type: none;
+        display: flex;
+        gap: 3rem;
+        .item {
+          cursor: pointer;
+          &:hover {
+            color: rgb(153, 153, 153);
+          }
+        }
+      }
+    }
+    .centerSection {
+      overflow: auto;
+      white-space: normal;
+      line-height: 1.5rem;
+      min-width: 30rem;
+    }
+    .rightSection {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      .inputbox {
+        height: 3rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        input {
+          width: 20rem;
+          outline: 0;
+          border: 0;
+          padding: 1rem;
+          border-radius: 100vw;
+          @include md {
+            width: 30rem;
+          }
+        }
+        button {
+          width: 8rem;
+          border: 0;
+          border-radius: 100vw;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 0 1rem;
+          @include md {
+            width: 10rem;
+          }
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+      .socialMediaLinks {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        justify-content: center;
+        .link {
+          border-radius: 100vw;
+          width: 3rem;
+          height: 3rem;
+          transition: all 0.3s ease;
+          background: #f50418a2;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.8rem;
+          cursor: pointer;
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}

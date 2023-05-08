@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import SearchResult from "./pages/searchResult/SearchResult";
-import Explore from "./pages/explore/Explore";
+import Footer from "./components/footer/Footer";
 import Details from "./pages/details/Details";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import fetchDataFromApi from "./utils/api";
@@ -13,6 +13,7 @@ import { getUrlConfig } from "./store/homeSlice";
 import { getGenrsConfig } from "./store/homeSlice";
 const App = () => {
   const dispatch = useDispatch();
+  // use effect for fetching url & genres with dependency  array [] empty
   useEffect(() => {
     fetchapiConfiguration();
     fetchgenres();
@@ -31,11 +32,14 @@ const App = () => {
     let promises = [];
     let endpoints = ["movie", "tv"];
     let allsource = {};
-
+    // push api calls into array promises
     endpoints.forEach((url) => {
       promises.push(fetchDataFromApi(`genre/${url}/list`));
     });
 
+    // using Promise.all get data at same time for movie & tv genres
+
+    // store data into object with key as genres id and value id perticular genre
     const data = await Promise.all(promises);
     data.map(({ genres }) => {
       return genres.map((g) => {
@@ -43,6 +47,7 @@ const App = () => {
       });
     });
 
+    // used dispatch to store data into redux store by getGenrsConfig action.
     dispatch(getGenrsConfig(allsource));
   };
 
@@ -54,10 +59,9 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />
           <Route path="/search/:query" element={<SearchResult />} />
-          <Route path="/explore/:mediaType" element={<Explore />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </div>
   );

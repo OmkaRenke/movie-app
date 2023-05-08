@@ -5,7 +5,6 @@ import VideosSection from "./videosSection/VideosSection";
 import DetailsBanner from "./detailsBanner/DetailsBanner";
 import Recommendation from "./carousels/Recommendation";
 import Similar from "./carousels/Similar";
-import "./style.scss";
 const Details = () => {
   const { mediaType, id } = useParams();
   const { data, loading } = useFetch(`${mediaType}/${id}/videos`);

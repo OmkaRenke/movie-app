@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
 import LazyLoadImage from "../../../components/lazyload/LazyLoad";
 import { useSelector } from "react-redux";
-import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import dayjs from "dayjs";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
@@ -12,13 +11,18 @@ const HeroBanner = () => {
   const { data, loading } = useFetch("movie/upcoming");
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
+  // to get random movie data
+  // start
   useEffect(() => {
     const index = Math.floor(Math.random() * 20);
     const bg = url?.backdrop + data?.results?.[index]?.backdrop_path;
     setHeroBannerMovieData(data?.results?.[index]);
     setBackgroundImage(bg);
   }, [data]);
-  console.log(heroBannerMovieData);
+  // end
+
+  // console.log(heroBannerMovieData);
+
   return (
     <div className="HeroBanner">
       <div className="heroBgImg">
@@ -31,7 +35,7 @@ const HeroBanner = () => {
           }`}</h2>
           <div className="banner-info">
             {" "}
-            Release date{" "}
+            Release Date -{" "}
             {heroBannerMovieData?.release_date
               ? dayjs(heroBannerMovieData?.release_date).format("MMM D, YYYY")
               : "1-1-1"}

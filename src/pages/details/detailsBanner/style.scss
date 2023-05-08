@@ -2,7 +2,7 @@
 
 .DetailsBanner {
   width: 100%;
-  color: red;
+  color: rgb(255, 255, 255);
   //   position: relative;
   .details {
     width: 100%;
@@ -36,6 +36,7 @@
     .left-section {
       flex-shrink: 0;
       .lazy-load-image-background {
+        box-shadow: rgba(255, 0, 0, 0.288) 0px 22px 70px 4px;
         width: 30rem;
         height: 40rem;
         position: absolute; //1
@@ -98,6 +99,7 @@
           cursor: pointer;
           svg {
             width: 60px;
+            height: 30px;
             @include md {
               width: 80px;
               height: 40px;

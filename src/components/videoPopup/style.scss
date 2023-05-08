@@ -1,9 +1,9 @@
 .videoPopup {
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -32,9 +32,17 @@
     .closeBtn {
       position: absolute;
       top: -20px;
-      right: 0;
+      right: 1rem;
+      font-size: 1.6rem;
       color: white;
       cursor: pointer;
+    }
+    .down {
+      top: 100%;
+      color: rgb(255, 255, 255);
+      margin-top: 1rem;
+      font-size: 1.6rem;
+      right: 1rem;
     }
   }
   &.visible {

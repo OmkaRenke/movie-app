@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import fetchDataFromApi from "../utils/api";
+// custom hook which returns data and loading state for perticular url;
 const useFetch = (url) => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(null);

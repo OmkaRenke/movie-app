@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./header.scss";
 import ContenttWrapper from "../contentWrapper/ContentWrapper";
 import { HiOutlineSearch } from "react-icons/hi";
-import { VscChromeClose } from "react-icons/vsc";
-import { SlMenu } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
+// import logo from "../../assets/logo.png";
+import logo from "../../assets/images.png";
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [lastScroll, setLastScroll] = useState();
   const [searchQuery, setSearchQuery] = useState("");
   const [show, setShow] = useState("top");
@@ -19,7 +18,7 @@ const Header = () => {
   };
   const handleScroll = () => {
     if (window.scrollY > 200) {
-      if (window.scrollY > lastScroll && !mobileMenu) {
+      if (window.scrollY > lastScroll) {
         setShow("hide");
       } else {
         setShow("show");
@@ -35,21 +34,12 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScroll]);
-  // const navigateHandler = (type) => {
-  //   if (type === "movie") {
-  //     navigate("/explore/movie");
-  //   } else {
-  //     navigate("/explore/tv");
-  //   }
-  //   setMobileMenu(!mobileMenu);
-  // };
-
   return (
     <header className={`header ${show}`}>
       <ContenttWrapper>
         <div className="headerContent">
           <div className="logo" onClick={() => navigate("/")}>
-            {/* <img src={logo} alt="" /> */} logo
+            <img src={logo} alt="Cinescope" />
           </div>
           <div className="searchBox">
             <input
@@ -61,34 +51,8 @@ const Header = () => {
             />
             <HiOutlineSearch onClick={searchQueryHandler} />
           </div>
-          {/* <ul className="menuItems">
-            <li className="menuItem"></li>
-            <li className="menuItem" onClick={() => navigateHandler("movie")}>
-              Movies
-            </li>
-            <li className="menuItem" onClick={() => navigateHandler("tv")}>
-              TV Shows
-            </li>
-          </ul> */}
-          {/* <div className="mobileMenuItems">
-            <div onClick={() => setMobileMenu(!mobileMenu)}>
-              {mobileMenu ? <VscChromeClose /> : <SlMenu />}
-            </div>
-          </div> */}
         </div>
       </ContenttWrapper>
-      {/* //mobileMenu start  */}
-      {/* {mobileMenu && (
-        <div className="menu">
-          <div className="item" onClick={() => navigateHandler("movie")}>
-            Movies
-          </div>
-          <div className="item" onClick={() => navigateHandler("tv")}>
-            TVs
-          </div>
-        </div>
-      )} */}
-      {/* mobile menu end */}
     </header>
   );
 };

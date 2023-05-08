@@ -5,11 +5,11 @@ const Genres = ({ data }) => {
   const { genres } = useSelector((state) => state.home);
   return (
     <div className="Genres">
-      {data?.map((g) => {
-        if (!genres[g]?.name) return;
+      {data?.map((gen) => {
+        if (!genres[gen]?.name) return;
         return (
-          <div key={g} className="genre">
-            {genres[g]?.name}
+          <div key={gen} className="genre">
+            {genres[gen]?.name}
           </div>
         );
       })}

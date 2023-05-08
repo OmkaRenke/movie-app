@@ -12,12 +12,13 @@ const SearchResult = () => {
   const [data, setData] = useState(null);
   const [pagen, setPagen] = useState(1);
   const { query } = useParams();
-
+  // infinite scroll functionality start
   useEffect(() => {
     setPagen(1);
     fetchDatainit();
   }, [query]);
 
+  // to get data for first time
   const fetchDatainit = () => {
     setLoading(true);
     fetchDataFromApi(`search/multi?query=${query}&page=${pagen}`).then(
@@ -29,9 +30,12 @@ const SearchResult = () => {
     );
   };
 
+  // get the data for second time and increment page n
+
   const fetchnextdata = () => {
     fetchDataFromApi(`search/multi?query=${query}&page=${pagen}`).then(
       (res) => {
+        // if we have previous data then merge it with upcoming data
         if (data?.results) {
           setData({
             ...data,
@@ -44,6 +48,7 @@ const SearchResult = () => {
       }
     );
   };
+  // infinite scroll functionality end
   return (
     <div className="resultPage">
       {loading && <Spinner initial={true} />}
@@ -59,12 +64,12 @@ const SearchResult = () => {
               <InfiniteScroll
                 className="content"
                 dataLength={data?.results?.length || []}
-                next={fetchnextdata}
-                hasMore={pagen <= data?.total_pages}
-                loader={<Spinner />}
+                next={fetchnextdata} // pass the next function call to make it
+                hasMore={pagen <= data?.total_pages} // while pagen reach to end i.e data?.total_pages
+                loader={<Spinner />} // specify loader which will render when loading is true
               >
                 {data?.results?.map((item, index) => {
-                  if (item.media_type === "person") return;
+                  if (item.media_type === "person") return; // we only want the item which has media_type "movie" or "tv"
                   return (
                     <MovieCard key={index} data={item} fromSearch={true} />
                   );

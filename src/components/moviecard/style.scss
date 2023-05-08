@@ -37,15 +37,6 @@
         object-position: center;
       }
     }
-    .genres {
-      display: none;
-      position: relative;
-      @include md {
-        display: flex;
-        flex-flow: wrap;
-        justify-content: flex-end;
-      }
-    }
   }
   .textBlock {
     color: white;
@@ -72,6 +63,7 @@
   &:hover {
     .posterBlock {
       opacity: 0.5;
+      // transform: scale(1.3);
     }
   }
 }

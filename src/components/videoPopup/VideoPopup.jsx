@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactPlayer from "react-player/youtube";
 
 import "./style.scss";
@@ -13,7 +13,7 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
       <div className="opacityLayer" onClick={hidePopup}></div>
       <div className="videoPlayer">
         <span className="closeBtn" onClick={hidePopup}>
-          Close
+          X
         </span>
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${videoId}`}
@@ -22,6 +22,9 @@ const VideoPopup = ({ show, setShow, videoId, setVideoId }) => {
           height="100%"
           playing={true}
         />
+        <span className="closeBtn down" onClick={hidePopup}>
+          Close
+        </span>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@
     font-size: 3rem;
     color: rgb(255, 0, 0);
     position: absolute;
-    top: 44%;
+    top: 40%;
     transform: translateY(-50%);
     opacity: 0.5;
     display: none;
@@ -50,6 +50,10 @@
     }
     .carouselitem {
       width: 12.5rem;
+      height: 30rem;
+      @include md {
+        height: 40rem;
+      }
       cursor: pointer;
       @include md {
         width: calc(25% - 1.5rem);
@@ -61,6 +65,7 @@
       .poster {
         position: relative;
         width: 100%;
+        height: 65%;
         aspect-ratio: 1 / 1.5;
         background-size: cover;
         background-position: center;
@@ -69,6 +74,9 @@
         align-items: flex-end;
         justify-content: space-between;
         padding: 1rem;
+        @include md {
+          height: 80%;
+        }
         .lazy-load-image-background {
           position: absolute;
           top: 0;

@@ -1,11 +1,13 @@
 @import "../../../mixins.scss";
 .movieCard {
   width: calc(50% - 5px);
+  height: 30rem;
   margin-bottom: 25px;
   cursor: pointer;
   flex-shrink: 0;
   @include md {
     width: calc(25% - 15px);
+    height: 40rem;
   }
   @include lg {
     width: calc(20% - 16px);
@@ -13,6 +15,7 @@
   .posterBlock {
     position: relative;
     width: 100%;
+    height: 65%;
     aspect-ratio: 1 / 1.5;
     background-size: cover;
     background-position: center;
@@ -22,6 +25,9 @@
     justify-content: space-between;
     padding: 10px;
     transition: all ease 0.5s;
+    @include md {
+      height: 80%;
+    }
     .lazy-load-image-background {
       position: absolute;
       top: 0;

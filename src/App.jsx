@@ -13,6 +13,7 @@ import { getUrlConfig } from "./store/homeSlice";
 import { getGenrsConfig } from "./store/homeSlice";
 const App = () => {
   const dispatch = useDispatch();
+
   // use effect for fetching url & genres with dependency  array [] empty
   useEffect(() => {
     fetchapiConfiguration();

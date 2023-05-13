@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 import fetchDataFromApi from "../../utils/api";
 import Spinner from "../../components/spinner/Spinner";
@@ -12,6 +12,13 @@ const SearchResult = () => {
   const [data, setData] = useState(null);
   const [pagen, setPagen] = useState(1);
   const { query } = useParams();
+
+  const location = useLocation();
+  // if query changes page will reload and scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   // infinite scroll functionality start
   useEffect(() => {
     setPagen(1);

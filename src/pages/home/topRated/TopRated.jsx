@@ -9,7 +9,12 @@ const TopRated = () => {
       <ContentWrapper>
         <span className="title">TopRated</span>
       </ContentWrapper>
-      <Carousel data={data?.results} loading={loading} title={TopRated} />
+      <Carousel
+        data={data?.results}
+        loading={loading}
+        title={TopRated}
+        endpoint={"movie"}
+      />
     </div>
   );
 };

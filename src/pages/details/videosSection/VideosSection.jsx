@@ -12,11 +12,11 @@ const VideosSection = ({ data, loading }) => {
   const [videoId, setVideoId] = useState(null);
   const officialvideosref = useRef();
   // scroll in y direction start
-  // using ref 
-  const navigation = (dir) => {
+  // using ref
+  const navigation = (direction) => {
     const officialvideos = officialvideosref.current;
     const scroll =
-      dir === "left"
+      direction === "left"
         ? officialvideos.scrollLeft - (officialvideos.offsetWidth + 20)
         : officialvideos.scrollLeft + (officialvideos.offsetWidth + 20);
     officialvideos.scrollTo({
@@ -24,7 +24,7 @@ const VideosSection = ({ data, loading }) => {
       behavior: "smooth",
     });
   };
-    // scroll in y direction end
+  // scroll in y direction end
   return (
     <div className="videosSection">
       <ContentWrapper>
